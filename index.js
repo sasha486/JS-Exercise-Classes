@@ -177,10 +177,19 @@ class Student extends Lambdasian {
   listSubjects() {
     return `Loving ${this.favSubjects}!`;
   }
-  PRAssignments(subject) {
-    return `${this.name} has submitted a PR`;
+  PRAssignment(subject) {
+    return `${this.name} has submitted a PR for ${subject}.`;
+  }
+  sprintChallenge(subject) {
+    return `${this.name} has begun sprint challenge on ${subject}.`;
   }
 }
+const webStudent = new Student({
+  name: "Sasha",
+  previousBackground: "Business",
+  className: "Webpt29",
+  favSubjects: ["JS", "CSS", "HTML"],
+});
 
 /*
     TASK 6
@@ -195,7 +204,24 @@ class Student extends Lambdasian {
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
-class ProjectManager {}
+class ProjectManager extends Instructor {
+  constructor(attributes) {
+    super(attributes);
+    this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standby times!`;
+  }
+  debugsCode(student, subject) {
+    return `${this.name} dubugs ${student.name}'s code on ${subject}.`;
+  }
+}
+const pm = new ProjectManager({
+  name: "Jen",
+  gradClassName: "Sam",
+  favInstructor: "Pace",
+});
 /*
     STRETCH PROBLEM (no tests!)
       - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
